@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="APP">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="ng-grid/ng-grid.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/angular.js/1.5.5/angular.min.js"></script>
+    <script src="ng-grid/ng-grid-2.0.8.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <style type="text/css">
+    li {
+        margin: 0 3px 3px 3px;
+        padding: 0.4em;
+        padding-left: 1.5em;
+        font-size: 1.4em;
+        height: 18px;
+        background-color: gray;
+        width: 150px;
+        list-style: none;
+        color: white;
+    }
+    </style>
+</head>
+<script type="text/javascript">
+var app = angular.module('APP', ['ngGrid']);
+app.controller('ctrl', function($scope) {
+    $scope.data = [{
+        idx: 0,
+        title: 'eve'
+    }, {
+        idx: 1,
+        title: 'dog'
+    }, {
+        idx: 2,
+        title: 'cat'
+    }, {
+        idx: 3,
+        title: 'bird'
+    }, {
+        idx: 4,
+        title: 'adam'
+    }];
+
+    // ngGrid setup
+    $scope.gridOpt = {
+        data: 'data',
+        columnDefs: [{
+            field: 'idx',
+            displayName: '#',
+            width: '64px'
+        }, {
+            field: 'title',
+            displayName: 'title'
+        }],
+    };
+})
+$(function() {
+    $("#sortable").sortable().disableSelection();
+    $(".ngCanvas").sortable().disableSelection();
+});
+</script>
+
+<body ng-controller="ctrl">
+    <div class="gridStyle" ng-grid="gridOpt"></div>
+    <ul id="sortable">
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 1</li>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 2</li>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 3</li>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 4</li>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 5</li>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 6</li>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 7</li>
+    </ul>
+</body>
+
+</html>
